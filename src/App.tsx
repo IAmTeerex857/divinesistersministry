@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Instagram, Youtube } from 'lucide-react';
+import RegisterForm from './components/RegisterForm';
 
 interface FAQItem {
   question: string;
@@ -14,6 +15,7 @@ interface Speaker {
 
 function App(): JSX.Element {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const faqs: FAQItem[] = [
     {
@@ -71,6 +73,11 @@ function App(): JSX.Element {
     }
   ];
 
+  const handleRegisterClick = () => {
+    console.log("Register button clicked");
+    setShowRegisterForm(true);
+  };
+
   return (
     <div className="w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,7 +122,10 @@ function App(): JSX.Element {
                   <h3 className="text-6xl font-light">Audacity</h3>
                   <h3 className="text-6xl italic">Action</h3>
                 </div>
-                <button className="bg-white text-purple-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                <button 
+                  onClick={handleRegisterClick}
+                  className="bg-white text-purple-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300"
+                >
                   Register Now
                 </button>
                 <p className="text-xl">MARCH 20-21 | 2025</p>
@@ -227,6 +237,10 @@ function App(): JSX.Element {
             </div>
           </div>
         </footer>
+        
+        {showRegisterForm && (
+          <RegisterForm onClose={() => setShowRegisterForm(false)} />
+        )}
       </div>
     </div>
   );
