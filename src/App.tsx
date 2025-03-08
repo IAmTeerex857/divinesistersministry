@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Instagram, Youtube } from 'lucide-react';
-import RegisterForm from './components/RegisterForm';
 
 interface FAQItem {
   question: string;
@@ -13,9 +12,15 @@ interface Speaker {
   image: string;
 }
 
+// Define the ml function type to avoid TypeScript errors
+declare global {
+  interface Window {
+    ml: (action: string, formId: string, open?: boolean) => void;
+  }
+}
+
 function App(): JSX.Element {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
-  const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const faqs: FAQItem[] = [
     {
@@ -75,7 +80,12 @@ function App(): JSX.Element {
 
   const handleRegisterClick = () => {
     console.log("Register button clicked");
-    setShowRegisterForm(true);
+    // Use the MailerLite embedded form
+    if (window.ml) {
+      window.ml('show', 'NHNlXV', true);
+    } else {
+      console.error("MailerLite script not loaded");
+    }
   };
 
   return (
@@ -237,10 +247,6 @@ function App(): JSX.Element {
             </div>
           </div>
         </footer>
-        
-        {showRegisterForm && (
-          <RegisterForm onClose={() => setShowRegisterForm(false)} />
-        )}
       </div>
     </div>
   );
