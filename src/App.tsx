@@ -89,36 +89,8 @@ function App(): JSX.Element {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#e6e0f8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* About Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="space-y-8">
-            <p className="text-lg font-semibold text-gray-900">ABOUT US</p>
-            <h1 className="text-5xl sm:text-6xl font-bold text-gray-900">DIVINE SISTERS MINISTRY</h1>
-            <div className="grid lg:grid-cols-2 gap-12">
-              <p className="text-xl text-gray-700">
-                Divine Sisters Ministry is a non-denominational, faith-based community that encourages, equips, and empowers women to deepen their relationship with God, build meaningful friendships, and do exploits in every area of life through connection, mentorship, and support.
-              </p>
-              <div className="flex items-center">
-                <p className="text-xl font-semibold text-gray-900">
-                  Our motto is: "Know God, Be Strong & Do Exploits."
-                </p>
-              </div>
-            </div>
-            <div className="mt-8">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSclfLMwDKoFsA7Atb2z_Ydh1csjt0yu7I1tcUA3XB9_b80x5Q/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-3 text-base font-medium text-amber-500 bg-white border border-amber-500 rounded-md hover:bg-amber-50 transition duration-150 ease-in-out"
-              >
-                Join our Community
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* Summit Section */}
         <section className="bg-purple-900 text-white py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
@@ -155,26 +127,57 @@ function App(): JSX.Element {
           </div>
         </section>
 
-        {/* Speakers Section */}
+        {/* Speakers Section - Updated for consistent image sizes */}
         <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-gray-900 mb-8">Meet our speakers</h2>
-          <p className="text-xl text-gray-700 mb-16">
-            Join our dynamic guest speakers as they share their journeys of faith, resilience, and success.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-12">Meet Our Speakers</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {speakers.map((speaker, index) => (
-              <div key={index} className="space-y-4">
-                <img
-                  src={speaker.image}
-                  alt={speaker.name}
-                  className="w-full h-96 object-cover rounded-lg"
-                />
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold">{speaker.name}</h3>
-                  <p className="text-gray-600">{speaker.title}</p>
+              <div key={index} className="text-center">
+                <div className="mb-4 aspect-[3/4] w-full max-w-[300px] mx-auto relative">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img
+                      src={speaker.image}
+                      alt={speaker.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
                 </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{speaker.name}</h3>
+                <p className="text-gray-600">{speaker.title}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <h2 className="text-2xl font-bold mb-12">ABOUT US</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <img 
+                src="/images/divine-logo.png" 
+                alt="Divine Sisters Ministry Logo" 
+                className="w-auto h-auto max-w-full"
+              />
+            </div>
+            <div className="space-y-8">
+              <p className="text-xl">
+                Divine Sisters Ministry is a non-denominational, faith-based community that encourages, equips, and empowers women to deepen their relationship with God, build meaningful friendships, and do exploits in every area of life through connection, mentorship, and support.
+              </p>
+              <p className="text-xl">
+                Our motto: <span className="text-orange-600">Know God, Be Strong & Do Exploits.</span>
+              </p>
+              <div>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSclfLMwDKoFsA7Atb2z_Ydh1csjt0yu7I1tcUA3XB9_b80x5Q/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-3 text-base font-medium text-orange-600 bg-white border-2 border-orange-600 rounded-full hover:bg-orange-50 transition duration-150 ease-in-out"
+                >
+                  Join our Community
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -208,7 +211,7 @@ function App(): JSX.Element {
           </div>
         </section>
 
-        {/* Footer */}
+        {/* Footer - Update WhatsApp number */}
         <footer className="bg-purple-900 text-white py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -220,8 +223,8 @@ function App(): JSX.Element {
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-semibold">Inquiries</h3>
-                <a href="https://wa.me/+2340994442606" className="text-lg hover:underline">
-                  Whatsapp +2340994442606
+                <a href="https://wa.me/+2348099442606" className="text-lg hover:underline">
+                  Whatsapp +2348099442606
                 </a>
               </div>
             </div>
