@@ -1101,6 +1101,11 @@ ul, ol { list-style: none; }
   .agenda__item { grid-template-columns: 1fr; gap: 8px; }
   .agenda__item-type { display: none; }
   .faq__header { flex-direction: column; }
-  .footer-cta__top { flex-direction: column; gap: 12px; }
-  .footer-cta__links { flex-direction: column; gap: 16px; }
+  .footer-cta__top { flex-direction: column; gap: 12px; align-items: center; }
+  .footer-cta__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+    padding: 24px var(--px);
+  }
 }
