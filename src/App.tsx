@@ -3,7 +3,7 @@ import { ChevronDown, Instagram, Youtube, Mail, MessageCircle, ArrowRight } from
 
 declare global {
   interface Window {
-    ml: (action: string, formId: string, open?: boolean) => void;
+    ml: (...args: unknown[]) => void;
   }
 }
 
@@ -33,21 +33,6 @@ function SilhouetteSVG() {
   );
 }
 
-/* ── Register Modal (iframe popup) ── */
-function RegisterModal({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="modal modal--iframe">
-        <button className="modal__close" onClick={onClose}>✕</button>
-        <iframe
-          src="https://mailchi.mp/61b26a074800/limitlesswomansummit2026"
-          title="Register for The Limitless Woman Summit 2026"
-          className="modal__iframe"
-        />
-      </div>
-    </div>
-  );
-}
 
 /* ════════════════════════════
    MAIN APP
@@ -69,6 +54,26 @@ export default function App() {
 
   const handleRegister = () => {
     setShowModal(true);
+    // Move the MailerLite form from the off-screen holder into our modal
+    setTimeout(() => {
+      const mlForm = document.querySelector('#ml-form-holder .ml-embedded');
+      const modalWrap = document.querySelector('.modal__form-wrap');
+      if (mlForm && modalWrap) {
+        modalWrap.appendChild(mlForm);
+      }
+    }, 50);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    // Move the form back to the off-screen holder
+    setTimeout(() => {
+      const mlForm = document.querySelector('.modal__form-wrap .ml-embedded');
+      const holder = document.getElementById('ml-form-holder');
+      if (mlForm && holder) {
+        holder.appendChild(mlForm);
+      }
+    }, 300);
   };
 
   const scrollTo = (id: string) => {
@@ -480,8 +485,15 @@ export default function App() {
         </div>
       </footer>
 
-      {/* ─── MODAL ─── */}
-      {showModal && <RegisterModal onClose={() => setShowModal(false)} />}
+      {/* ─── REGISTER MODAL (MailerLite embedded form) ─── */}
+      <div className={`modal-overlay ${showModal ? 'modal-overlay--visible' : ''}`} onClick={(e) => e.target === e.currentTarget && handleCloseModal()}>
+        <div className="modal modal--mailerlite">
+          <button className="modal__close" onClick={handleCloseModal}>✕</button>
+          <h2 className="modal__title">Register Now</h2>
+          <p className="modal__subtitle">Secure your spot for The Limitless Woman Summit 2026</p>
+          <div className="modal__form-wrap"></div>
+        </div>
+      </div>
     </>
   );
 }
