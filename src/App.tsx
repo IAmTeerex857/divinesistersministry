@@ -300,6 +300,7 @@ export default function App() {
                 <span className="marquee__item">IDENTITY</span>
                 <span className="marquee__item">PURPOSE</span>
                 <span className="marquee__item">FAITH</span>
+                <span className="marquee__item">KNOW GOD, BE STRONG & DO EXPLOITS</span>
               </span>
             ))}
           </div>

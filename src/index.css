@@ -13,8 +13,8 @@
   --color-dark: #0a0a0a;
   --color-dark-surface: #111111;
   --color-text: #0a0a0a;
-  --color-text-light: #888888;
-  --color-text-muted: #aaaaaa;
+  --color-text-light: #0a0a0a;
+  --color-text-muted: #0a0a0a;
   --color-accent: #c7b1e6;
   --color-accent-dark: #a68dd4;
   --color-white: #ffffff;
@@ -367,7 +367,7 @@ ul, ol { list-style: none; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px;
+  min-height: 280px;
   transition: all var(--transition);
   position: relative;
 }
