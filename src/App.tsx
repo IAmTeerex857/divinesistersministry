@@ -8,7 +8,7 @@ declare global {
 }
 
 /* ── Scroll reveal hook ── */
-function useScrollReveal() {
+function useScrollReveal(deps: React.DependencyList = []) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -18,9 +18,15 @@ function useScrollReveal() {
       },
       { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
     );
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+    const t = setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    }, 50);
+    return () => {
+      clearTimeout(t);
+      observer.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 }
 
 /* ── Silhouette SVG ── */
@@ -44,7 +50,7 @@ export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDay, setActiveDay] = useState<1 | 2>(1);
 
-  useScrollReveal();
+  useScrollReveal([activeDay]);
 
   useEffect(() => {
     const onScroll = () => setNavScrolled(window.scrollY > 50);
@@ -103,16 +109,23 @@ export default function App() {
 
   // ── Agenda data ──
   const day1 = [
-    { time: '6:00 PM (UK) / 7:00 PM (WAT)', title: 'Opening & Welcome', type: 'Welcome' },
-    { time: '6:15 PM (UK) / 7:15 PM (WAT)', title: 'Panel Session: What Does "Made For More" Mean?', type: 'Panel' },
-    { time: '7:15 PM (UK) / 8:15 PM (WAT)', title: 'Reflective Discussion & Q&A', type: 'Discussion' },
-    { time: '8:00 PM (UK) / 9:00 PM (WAT)', title: 'Closing Prayer & Reflection', type: 'Prayer' },
+    { time: '18:00 (GMT) / 19:00 (WAT)', title: 'Opening & Worship', type: 'Worship' },
+    { time: '18:30 (GMT) / 19:30 (WAT)', title: 'Keynote Speech', type: 'Keynote' },
+    { time: '18:45 (GMT) / 19:45 (WAT)', title: 'Panel Session', type: 'Panel' },
+    { time: '19:55 (GMT) / 20:55 (WAT)', title: 'Q&A Session', type: 'Q&A' },
+    { time: '20:20 (GMT) / 21:20 (WAT)', title: 'Closing Notes', type: 'Closing' },
+    { time: '20:30 (GMT) / 21:30 (WAT)', title: 'Session Ends', type: 'End' },
   ];
   const day2 = [
-    { time: '10:00 AM (UK) / 11:00 AM (WAT)', title: 'Opening & Worship', type: 'Welcome' },
-    { time: '10:15 AM (UK) / 11:15 AM (WAT)', title: 'Bible Study Masterclass', type: 'Masterclass' },
-    { time: '11:15 AM (UK) / 12:15 PM (WAT)', title: 'Practical Steps for Intentional Bible Study', type: 'Workshop' },
-    { time: '12:00 PM (UK) / 1:00 PM (WAT)', title: 'Prayer Session: Alignment & Depth', type: 'Prayer' },
+    { time: '10:00 (GMT) / 11:00 (WAT)', title: 'Opening & Welcome', type: 'Welcome' },
+    { time: '10:15 (GMT) / 11:15 (WAT)', title: 'Testimony (The Well)', type: 'Testimony' },
+    { time: '10:25 (GMT) / 11:25 (WAT)', title: 'Meet the Speakers', type: 'Speakers' },
+    { time: '10:30 (GMT) / 11:30 (WAT)', title: 'Bible Study Masterclass', type: 'Masterclass' },
+    { time: '11:20 (GMT) / 12:20 (WAT)', title: 'Testimonies (The Well x2)', type: 'Testimony' },
+    { time: '11:40 (GMT) / 12:40 (WAT)', title: 'Guest Speaker & Prayers', type: 'Prayer' },
+    { time: '12:20 (GMT) / 13:20 (WAT)', title: 'Community Video', type: 'Community' },
+    { time: '12:25 (GMT) / 13:25 (WAT)', title: 'Mission & Vote of Thanks', type: 'Closing' },
+    { time: '12:30 (GMT) / 13:30 (WAT)', title: 'Session Ends', type: 'End' },
   ];
   const agenda = activeDay === 1 ? day1 : day2;
 
