@@ -291,7 +291,7 @@ ul, ol { list-style: none; }
   max-width: 900px;
 }
 .about__heading {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(20px, 2.5vw, 28px);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -957,6 +957,24 @@ ul, ol { list-style: none; }
   font-weight: 700;
   color: var(--color-accent-dark);
   margin-bottom: 28px;
+}
+.ministry__scripture {
+  border-left: 3px solid var(--color-accent-dark);
+  padding: 12px 0 12px 20px;
+  margin: 20px 0;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+.ministry__scripture cite {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-dark);
 }
 .btn-outline {
   display: inline-flex;

@@ -88,7 +88,7 @@ export default function App() {
     { name: 'Speaker 3', org: 'TO BE ANNOUNCED', role: 'Guest Speaker', image: '', isSilhouette: true },
     { name: 'Speaker 4', org: 'TO BE ANNOUNCED', role: 'Panelist', image: '', isSilhouette: true },
     { name: 'Speaker 5', org: 'TO BE ANNOUNCED', role: 'Panelist', image: '', isSilhouette: true },
-    { name: 'Speaker 6', org: 'TO BE ANNOUNCED', role: 'Bible Study Lead', image: '', isSilhouette: true },
+    { name: 'Worship Leader', org: 'TO BE ANNOUNCED', role: 'Worship Leader', image: '', isSilhouette: true },
   ];
 
   // ── FAQ data ──
@@ -155,9 +155,9 @@ export default function App() {
             <ArrowRight size={18} /> Register Now
           </button>
           <div className="hero__meta">
-            <span>March 20–21</span>
+            <span>Friday & Saturday, March 20–21</span>
             <span>Virtual Summit</span>
-            <span>Google Meet</span>
+            <span>Youtube</span>
           </div>
         </div>
       </section>
@@ -174,8 +174,8 @@ export default function App() {
               </div>
               <div className="about__text-wrap">
                 <h2 className="about__heading reveal">
-                  Where <strong>women of faith, purpose, and vision</strong>{' '}
-                  <span>come together to step into their God-given identity.</span>
+                  The Limitless Woman Summit 2026 is a <strong>two-day virtual experience</strong>{' '}
+                  <span>celebrating International Women's Day and Mother's Day, where women of faith, purpose, and vision step into their God-given identity. Rooted in Ephesians 2:10, it reminds every woman she is God's workmanship, created for good works, empowered, and equipped to do exploits.</span>
                 </h2>
               </div>
             </div>
@@ -185,8 +185,8 @@ export default function App() {
                 <div className="stat__label">📅 DAYS</div>
               </div>
               <div className="stat reveal reveal-d1">
-                <div className="stat__number">6+</div>
-                <div className="stat__label">🎤 SPEAKERS</div>
+                <div className="stat__number">5+1</div>
+                <div className="stat__label">🎤 SPEAKERS & WORSHIP LEAD</div>
               </div>
               <div className="stat reveal reveal-d2">
                 <div className="stat__number">∞</div>
@@ -242,13 +242,13 @@ export default function App() {
               </div>
               <div className="expect__card expect__card--dark reveal reveal-d3">
                 <div className="expect__card-top">
-                  <h3 className="expect__card-title">Want to<br />be involved?</h3>
+                  <h3 className="expect__card-title">Subscribe to<br />our YouTube</h3>
                   <span className="expect__card-num">〰</span>
                 </div>
                 <div>
-                  <button className="expect__card-cta" onClick={handleRegister}>
-                    <ArrowRight size={16} /> Register Now
-                  </button>
+                  <a className="expect__card-cta" href="https://www.youtube.com/@DivineSistersMinistryTV" target="_blank" rel="noopener noreferrer">
+                    <ArrowRight size={16} /> Subscribe Now
+                  </a>
                 </div>
               </div>
             </div>
@@ -433,7 +433,17 @@ export default function App() {
               </div>
               <h2 className="ministry__title">Divine Sisters Ministry</h2>
               <p className="ministry__text">
-                Divine Sisters Ministry is a non-denominational, faith-based community that encourages, equips, and empowers women to deepen their relationship with God, build meaningful friendships, and do exploits in every area of life through connection, mentorship, and support.
+                Divine Sisters Ministry is a non-denominational, faith-based community that encourages, equips, and empowers women to deepen their relationship with God. Whether you are rededicating your life or looking for more depth, we provide a safe, non-judgmental space to grow without the pressure to be perfect.
+              </p>
+              <p className="ministry__text">
+                We know what it's like to crave a spiritual home where you can be yourself—to love God boldly while staying honest about the journey. Through connection, mentorship, and support, we help you build meaningful friendships and walk in obedience in every area of life.
+              </p>
+              <blockquote className="ministry__scripture">
+                “But the people who know their God shall be strong, and carry out great exploits.”
+                <cite>— Daniel 11:32b</cite>
+              </blockquote>
+              <p className="ministry__text">
+                We believe that when a woman truly knows her God, strength follows, and exploits become inevitable.
               </p>
               <p className="ministry__motto"><strong>Know God, Be Strong & Do Exploits.</strong></p>
               <a
