@@ -90,11 +90,11 @@ export default function App() {
   // ── Speakers data ──
   const speakers = [
     { name: 'Oyewunmi Fasoro', org: 'DIVINE SISTERS MINISTRY', role: 'Convener', image: '/images/Mrs Oye.JPEG' },
-    { name: 'Speaker 2', org: 'TO BE ANNOUNCED', role: 'Guest Speaker', image: '', isSilhouette: true },
-    { name: 'Speaker 3', org: 'TO BE ANNOUNCED', role: 'Guest Speaker', image: '', isSilhouette: true },
-    { name: 'Speaker 4', org: 'TO BE ANNOUNCED', role: 'Panelist', image: '', isSilhouette: true },
+    { name: 'Funto Ibuoye', org: '', role: 'Keynote Speaker & Panelist', image: '/images/Funto Ibuoye Keynote speaker & Panelist.JPG' },
+    { name: 'Chinelo Anene Peniel', org: '', role: 'Panelist', image: '/images/Chinelo Anene Peniel Panelist.JPG' },
+    { name: 'Speaker 4', org: 'TO BE ANNOUNCED', role: 'Guest Speaker', image: '', isSilhouette: true },
     { name: 'Speaker 5', org: 'TO BE ANNOUNCED', role: 'Panelist', image: '', isSilhouette: true },
-    { name: 'Worship Leader', org: 'TO BE ANNOUNCED', role: 'Worship Leader', image: '', isSilhouette: true },
+    { name: 'Anu Obong', org: '', role: 'Worship Minister', image: '/images/Anu Obong Worship Minister.JPG' },
   ];
 
   // ── FAQ data ──
