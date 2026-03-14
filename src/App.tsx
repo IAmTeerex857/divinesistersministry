@@ -29,20 +29,8 @@ function useScrollReveal(deps: React.DependencyList = []) {
   }, deps);
 }
 
-/* ── Silhouette SVG ── */
-function SilhouetteSVG() {
-  return (
-    <svg viewBox="0 0 200 300" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="100" cy="80" rx="45" ry="55" />
-      <path d="M100 140 C40 140 10 200 10 280 L10 300 L190 300 L190 280 C190 200 160 140 100 140Z" />
-    </svg>
-  );
-}
 
-
-/* ════════════════════════════
-   MAIN APP
-   ════════════════════════════ */
+/* ── Main App ── */
 export default function App() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
@@ -88,13 +76,15 @@ export default function App() {
   };
 
   // ── Speakers data ──
-  const speakers = [
-    { name: 'Oyewunmi Fasoro', org: 'DIVINE SISTERS MINISTRY', role: 'Convener', image: '/images/Mrs Oye.JPEG' },
+  const mainSpeaker = { name: 'Oyewunmi Fasoro', org: '', role: 'Convener', image: '/images/Mrs Oye.JPEG' };
+
+  const gridSpeakers = [
     { name: 'Funto Ibuoye', org: '', role: 'Keynote Speaker & Panelist', image: '/images/Funto Ibuoye Keynote speaker & Panelist.JPG' },
     { name: 'Chinelo Anene Peniel', org: '', role: 'Panelist', image: '/images/Chinelo Anene Peniel Panelist.JPG' },
-    { name: 'Speaker 4', org: 'TO BE ANNOUNCED', role: 'Guest Speaker', image: '', isSilhouette: true },
-    { name: 'Speaker 5', org: 'TO BE ANNOUNCED', role: 'Panelist', image: '', isSilhouette: true },
-    { name: 'Anu Obong', org: '', role: 'Worship Minister', image: '/images/Anu Obong Worship Minister.JPG' },
+    { name: 'Toyosi Etim Effiong', org: '', role: 'Panelist', image: '/images/Toyosi Etim Effiong Panelist .JPG' },
+    { name: 'Anu Obong', org: '', role: 'Music Minister', image: '/images/Anu Obong Worship Minister.JPG' },
+    { name: 'Bekah Nague', org: '', role: 'Guest Speaker', image: '/images/BEKAH NAGUE Guest Speaker.JPG' },
+    { name: 'Adebisi Olaniyi', org: '', role: 'Speaker', image: '/images/ADEBISI OLANIYI speaker.JPG' },
   ];
 
   // ── FAQ data ──
@@ -279,22 +269,23 @@ export default function App() {
                 <h2 className="speakers__title reveal">
                   Meet Our<br />Speakers
                 </h2>
-                <p className="speakers__desc reveal reveal-d1">
-                  Hear from women who walk in purpose and are passionate about empowering others.
-                </p>
+                <div className="speaker-card speaker-card--main reveal reveal-d1">
+                  <div className="speaker-card__img-wrap">
+                    <img src={mainSpeaker.image} alt={mainSpeaker.name} />
+                  </div>
+                  <div className="speaker-card__name">{mainSpeaker.name}</div>
+                  {mainSpeaker.org && <div className="speaker-card__org">{mainSpeaker.org}</div>}
+                  <div className="speaker-card__role">{mainSpeaker.role}</div>
+                </div>
               </div>
               <div className="speakers__grid">
-                {speakers.map((s, i) => (
+                {gridSpeakers.map((s, i) => (
                   <div className={`speaker-card reveal reveal-d${Math.min(i + 1, 5)}`} key={i}>
                     <div className="speaker-card__img-wrap">
-                      {s.isSilhouette ? (
-                        <div className="speaker-card__silhouette"><SilhouetteSVG /></div>
-                      ) : (
-                        <img src={s.image} alt={s.name} />
-                      )}
+                      <img src={s.image} alt={s.name} />
                     </div>
                     <div className="speaker-card__name">{s.name}</div>
-                    <div className="speaker-card__org">{s.org}</div>
+                    {s.org && <div className="speaker-card__org">{s.org}</div>}
                     <div className="speaker-card__role">{s.role}</div>
                   </div>
                 ))}

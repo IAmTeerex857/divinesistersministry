@@ -484,6 +484,9 @@ ul, ol { list-style: none; }
   background: #222;
   margin-bottom: 16px;
 }
+.speaker-card--main .speaker-card__img-wrap {
+  aspect-ratio: 3 / 4;
+}
 .speaker-card__img-wrap img {
   width: 100%;
   height: 100%;
